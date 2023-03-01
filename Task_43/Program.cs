@@ -5,7 +5,8 @@ System.Console.WriteLine("\n\nDefine cross point of two Linear Functions \n\n"+"
 "y = k1 * x + b1 \n"+"y = k2 * x + b2\n"+"****************");
 
 
-
+List <double> GetSlopeIntercept ()
+{
     System.Console.Write("\nEnter Slope (k1) for the 1st Linear function: ");
     List <double> consts = new List<double>();
     double k1 = int.Parse(Console.ReadLine());
@@ -21,10 +22,12 @@ System.Console.WriteLine("\n\nDefine cross point of two Linear Functions \n\n"+"
     double b2 = int.Parse(Console.ReadLine());
     consts.Add (b2); 
 
-    
+    return consts;
+}
 
+   
       
-void CrossPoint (List <double> list)
+void IntersectionPoint (List <double> list)
 {
     double k1 = list[0];
     double b1 = list[1];
@@ -34,9 +37,20 @@ void CrossPoint (List <double> list)
 double x=(b2-b1)/(k1-k2);
 double y=k2*x+b2;
 
-System.Console.WriteLine("****************************************************");
-System.Console.WriteLine($"\n\nCross point of two lines at X={x} and Y={y}\n\n");
+if (k1==k2) 
+    {
+        System.Console.WriteLine("\n******************************");
+        System.Console.WriteLine("\nLines are parallel!!!\n\n");
+    }
+    else
+    {  
+        System.Console.WriteLine("****************************************************");
+        System.Console.WriteLine($"\n\nCross point of two lines at X={x} and Y={y} \n\n");
+    }
+ 
+
 }
 
 
-CrossPoint (consts);
+IntersectionPoint (GetSlopeIntercept());
+
